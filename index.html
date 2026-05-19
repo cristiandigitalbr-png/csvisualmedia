@@ -477,12 +477,66 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-6px); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+
     .reveal {
       opacity: 0; transform: translateY(32px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.visible {
       opacity: 1; transform: translateY(0);
+    }
+
+    /* Flotante en tarjetas de servicios */
+    .service-card {
+      transition: transform 0.3s ease, background 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 40px rgba(26,127,232,0.15);
+    }
+
+    /* Flotante continuo en bloque CS */
+    .why-box-main {
+      animation: float1 4s ease-in-out infinite;
+    }
+
+    /* Flotante en pasos del proceso */
+    .process-step:nth-child(1) { animation: float1 4s ease-in-out infinite; }
+    .process-step:nth-child(2) { animation: float2 4.5s ease-in-out infinite 0.5s; }
+    .process-step:nth-child(3) { animation: float3 5s ease-in-out infinite 1s; }
+    .process-step:nth-child(4) { animation: float1 4.2s ease-in-out infinite 1.5s; }
+
+    /* Flotante en estadísticas del hero */
+    .hero-stats > div:nth-child(1) { animation: float2 4s ease-in-out infinite; }
+    .hero-stats > div:nth-child(2) { animation: float1 4.5s ease-in-out infinite 0.7s; }
+    .hero-stats > div:nth-child(3) { animation: float3 5s ease-in-out infinite 1.2s; }
+
+    /* Flotante en canales de contacto */
+    .channel {
+      transition: border-color 0.2s, transform 0.3s ease;
+    }
+    .channel:hover {
+      transform: translateX(8px) translateY(-3px) !important;
+    }
+
+    /* Flotante en why-features */
+    .why-feature {
+      transition: transform 0.3s ease;
+    }
+    .why-feature:hover {
+      transform: translateX(6px);
     }
 
     /* ── RESPONSIVE ── */
@@ -675,20 +729,20 @@
       <span class="section-tag">Hablemos</span>
       <h2>Empecemos tu <span class="accent">proyecto</span></h2>
       <p class="section-intro">Completá el formulario y te respondemos en menos de 24 horas.</p>
-      <div class="contact-form" style="margin-top: 40px;">
+      <form class="contact-form" style="margin-top: 40px;" action="https://formspree.io/f/mwvzvngp" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Nombre</label>
-            <input type="text" class="form-input" placeholder="Tu nombre"/>
+            <input type="text" name="nombre" class="form-input" placeholder="Tu nombre" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="tu@email.com"/>
+            <input type="email" name="email" class="form-input" placeholder="tu@email.com" required/>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Servicio de interés</label>
-          <select class="form-select form-input">
+          <select name="servicio" class="form-select form-input">
             <option value="">Seleccioná un servicio...</option>
             <option>Sitio Web</option>
             <option>Tienda Online</option>
@@ -699,10 +753,10 @@
         </div>
         <div class="form-group">
           <label class="form-label">Contanos sobre tu proyecto</label>
-          <textarea class="form-textarea" placeholder="¿Qué necesitás? ¿Cuál es tu objetivo?"></textarea>
+          <textarea name="mensaje" class="form-textarea" placeholder="¿Qué necesitás? ¿Cuál es tu objetivo?"></textarea>
         </div>
-        <button class="btn-submit">Enviar Consulta →</button>
-      </div>
+        <button type="submit" class="btn-submit">Enviar Consulta →</button>
+      </form>
     </div>
     <div class="contact-info reveal">
       <h3>¿Preferís hablar directamente?</h3>
