@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Visual Media | Agencia Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a7fe8;
+      --blue-light: #3da0ff;
+      --blue-dark: #0d5db5;
+      --black: #0a0a0f;
+      --dark: #111118;
+      --dark2: #16161f;
+      --dark3: #1e1e2a;
+      --gray: #8888aa;
+      --white: #f0f2f8;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6vw;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,127,232,0.15);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 900; letter-spacing: 1px;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--blue); }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--gray); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue-light); }
+
+    .nav-cta {
+      background: var(--blue); color: #fff;
+      padding: 10px 24px; border-radius: 4px;
+      font-weight: 700; font-size: 0.85rem; letter-spacing: 1px;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 120px 6vw 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(26,127,232,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(13,93,181,0.08) 0%, transparent 60%),
+        var(--black);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(26,127,232,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,127,232,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero-tag {
+      position: relative; z-index: 1;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--blue);
+      border: 1px solid rgba(26,127,232,0.4);
+      padding: 6px 16px; border-radius: 2px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h1 {
+      position: relative; z-index: 1;
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      font-weight: 900; line-height: 0.92;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    h1 .accent { color: var(--blue); }
+    h1 .stroke {
+      -webkit-text-stroke: 2px var(--blue);
+      color: transparent;
+    }
+
+    .hero-sub {
+      position: relative; z-index: 1;
+      max-width: 520px;
+      color: var(--gray); font-size: 1.05rem; line-height: 1.7;
+      margin-top: 28px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      position: relative; z-index: 1;
+      display: flex; gap: 16px; align-items: center;
+      margin-top: 44px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      padding: 15px 36px; border-radius: 4px;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
+      text-transform: uppercase; text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 30px rgba(26,127,232,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--blue-light);
+      box-shadow: 0 0 50px rgba(26,127,232,0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      color: var(--white); text-decoration: none;
+      font-weight: 600; font-size: 0.9rem;
+      display: flex; align-items: center; gap: 8px;
+      padding: 15px 0;
+      transition: color 0.2s;
+    }
+    .btn-secondary::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+    .btn-secondary:hover { color: var(--blue-light); }
+    .btn-secondary:hover::after { transform: translateX(4px); }
+
+    .hero-stats {
+      position: relative; z-index: 1;
+      display: flex; gap: 48px; margin-top: 80px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem; font-weight: 900; color: var(--white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--blue); }
+    .stat-label {
+      font-size: 0.8rem; color: var(--gray);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 6vw; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1;
+      text-transform: uppercase; letter-spacing: -0.5px;
+    }
+    h2 .accent { color: var(--blue); }
+
+    .section-intro {
+      color: var(--gray); font-size: 1rem; line-height: 1.7;
+      max-width: 500px; margin-top: 16px;
+    }
+
+    /* ── SERVICES ── */
+    #servicios { background: var(--dark); }
+
+    .services-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; flex-wrap: wrap; gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--dark2);
+      padding: 48px 36px;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover { background: var(--dark3); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2.5rem; margin-bottom: 24px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      color: var(--gray); font-size: 0.95rem; line-height: 1.7;
+    }
+
+    .service-num {
+      position: absolute; bottom: 24px; right: 28px;
+      font-family: var(--font-display);
+      font-size: 5rem; font-weight: 900;
+      color: rgba(26,127,232,0.06);
+      line-height: 1; pointer-events: none;
+    }
+
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+    }
+    .service-tag {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--blue); border: 1px solid rgba(26,127,232,0.3);
+      padding: 4px 10px; border-radius: 2px;
+    }
+
+    /* ── WHY US ── */
+    #nosotros {
+      background: var(--black);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-box-main {
+      background: var(--dark2);
+      border: 1px solid rgba(26,127,232,0.2);
+      padding: 48px;
+      position: relative;
+    }
+
+    .why-box-main::after {
+      content: '';
+      position: absolute; bottom: -16px; right: -16px;
+      width: 100%; height: 100%;
+      border: 1px solid rgba(26,127,232,0.1);
+      z-index: -1;
+    }
+
+    .big-cs {
+      font-family: var(--font-display);
+      font-size: 8rem; font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .why-box-main p {
+      color: var(--gray); font-size: 1rem; line-height: 1.8;
+      margin-top: 16px;
+    }
+
+    .why-features { margin-top: 40px; }
+    .why-feature {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .why-feature:last-child { border-bottom: none; }
+
+    .feature-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(26,127,232,0.1);
+      border: 1px solid rgba(26,127,232,0.3);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .feature-desc { color: var(--gray); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── PROCESS ── */
+    #proceso { background: var(--dark); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; margin-top: 64px; position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 32px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .process-step {
+      padding: 0 24px; text-align: center; position: relative;
+    }
+
+    .step-num {
+      width: 64px; height: 64px;
+      background: var(--dark3);
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 900; color: var(--blue);
+      position: relative; z-index: 1;
+    }
+
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 800;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .process-step p { color: var(--gray); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contacto {
+      background: var(--black);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--white); padding: 14px 18px;
+      font-family: var(--font-body); font-size: 0.95rem;
+      border-radius: 4px; outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--blue);
+    }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-submit {
+      background: var(--blue); color: #fff;
+      padding: 16px; border: none; border-radius: 4px;
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; margin-top: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 0 30px rgba(26,127,232,0.3);
+    }
+    .btn-submit:hover {
+      background: var(--blue-light);
+      box-shadow: 0 0 50px rgba(26,127,232,0.5);
+      transform: translateY(-2px);
+    }
+
+    .contact-info { padding-top: 16px; }
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 900;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .contact-info p { color: var(--gray); font-size: 0.95rem; line-height: 1.8; }
+
+    .contact-channels { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+    .channel {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px;
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      text-decoration: none; color: var(--white);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .channel:hover { border-color: var(--blue); transform: translateX(4px); }
+    .channel-icon { font-size: 1.4rem; }
+    .channel-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+    .channel-value { font-weight: 600; font-size: 0.95rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 40px 6vw;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: gap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--blue); }
+
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #nosotros, #contacto {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .nav-links { display: none; }
+      .process-steps::before { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 5vw; }
+      section { padding: 72px 5vw; }
+      .hero-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">CS <span>Visual</span>Media</a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-tag">Agencia de Marketing Digital</div>
+    <h1>
+      Tu negocio,<br>
+      <span class="accent">visible</span><br>
+      <span class="stroke">online.</span>
+    </h1>
+    <p class="hero-sub">
+      Diseñamos sitios web, gestionamos tu presencia digital y llevamos tu marca al siguiente nivel con estrategias que convierten.
+    </p>
+    <div class="hero-actions">
+      <a href="#servicios" class="btn-primary">Ver Servicios</a>
+      <a href="#contacto" class="btn-secondary">Hablar con nosotros</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">150<span>+</span></div>
+        <div class="stat-label">Proyectos entregados</div>
+      </div>
+      <div>
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div>
+        <div class="stat-num">4<span>x</span></div>
+        <div class="stat-label">ROI promedio en Ads</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <div class="services-header">
+      <div>
+        <span class="section-tag">Lo que hacemos</span>
+        <h2>Nuestros <span class="accent">Servicios</span></h2>
+        <p class="section-intro">Soluciones digitales completas para hacer crecer tu negocio.</p>
+      </div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="service-icon">🌐</span>
+        <h3>Sitios Web</h3>
+        <p>Diseñamos y desarrollamos sitios web rápidos, modernos y optimizados para SEO que reflejan la identidad de tu marca y convierten visitantes en clientes.</p>
+        <div class="service-tags">
+          <span class="service-tag">HTML/CSS</span>
+          <span class="service-tag">WordPress</span>
+          <span class="service-tag">SEO</span>
+        </div>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛒</span>
+        <h3>Tiendas Online</h3>
+        <p>Creamos e-commerce profesionales con experiencia de compra fluida, pasarelas de pago integradas y gestión de inventario para impulsar tus ventas digitales.</p>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📣</span>
+        <h3>Publicidad Meta Ads</h3>
+        <p>Gestionamos tus campañas en Facebook e Instagram con segmentación precisa, creatividades que impactan y optimización constante para maximizar tu inversión.</p>
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <h3>Gestión de Redes</h3>
+        <p>Creamos contenido estratégico, gestionamos tu comunidad y desarrollamos una presencia sólida en redes sociales que conecta con tu audiencia ideal.</p>
+        <div class="service-num">04</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="nosotros">
+    <div class="why-visual reveal">
+      <div class="why-box-main">
+        <div class="big-cs">CS</div>
+        <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; letter-spacing: 1px; margin-top: -8px; color: var(--white);">Visual<span style="color: var(--blue);">Media</span></div>
+        <p>Somos un equipo apasionado por el marketing digital y el diseño web. Trabajamos codo a codo con cada cliente para entender sus objetivos y traducirlos en resultados concretos.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="section-tag">Por qué elegirnos</span>
+      <h2>Resultados <span class="accent">reales</span></h2>
+      <p class="section-intro">No somos una agencia más. Somos tu equipo digital de confianza.</p>
+      <div class="why-features">
+        <div class="why-feature">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <div class="feature-title">Entregas rápidas</div>
+            <div class="feature-desc">Cumplimos los plazos acordados. Tu proyecto no queda en la cola.</div>
+          </div>
+        </div>
+        <div class="why-feature">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <div class="feature-title">Enfoque en resultados</div>
+            <div class="feature-desc">Cada decisión apunta a un objetivo: hacer crecer tu negocio.</div>
+          </div>
+        </div>
+        <div class="why-feature">
+          <div class="feature-icon">💬</div>
+          <div>
+            <div class="feature-title">Comunicación directa</div>
+            <div class="feature-desc">Seguimiento constante y transparencia en cada etapa del proyecto.</div>
+          </div>
+        </div>
+        <div class="why-feature">
+          <div class="feature-icon">🔧</div>
+          <div>
+            <div class="feature-title">Soporte continuo</div>
+            <div class="feature-desc">No desaparecemos al entregar. Estamos para lo que necesites.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="proceso">
+    <div style="text-align:center; margin-bottom: 0;">
+      <span class="section-tag">Cómo trabajamos</span>
+      <h2>Nuestro <span class="accent">Proceso</span></h2>
+      <p class="section-intro" style="margin: 16px auto 0;">Simple, claro y orientado a resultados.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Consulta</h3>
+        <p>Entendemos tu negocio, objetivos y necesidades en una reunión inicial sin costo.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Estrategia</h3>
+        <p>Diseñamos un plan personalizado alineado con tus metas y presupuesto.</p>
+      </div>
+      <div class="process-step" style="padding-top: 40px;">
+        <div class="step-num">03</div>
+        <h3>Ejecución</h3>
+        <p>Desarrollamos y lanzamos tu proyecto con revisiones y aprobaciones en cada paso.</p>
+      </div>
+      <div class="process-step" style="padding-top: 40px;">
+        <div class="step-num">04</div>
+        <h3>Resultados</h3>
+        <p>Medimos, optimizamos y reportamos el desempeño para crecer continuamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto">
+    <div class="reveal">
+      <span class="section-tag">Hablemos</span>
+      <h2>Empecemos tu <span class="accent">proyecto</span></h2>
+      <p class="section-intro">Completá el formulario y te respondemos en menos de 24 horas.</p>
+      <div class="contact-form" style="margin-top: 40px;">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-input" placeholder="Tu nombre"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="tu@email.com"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Servicio de interés</label>
+          <select class="form-select form-input">
+            <option value="">Seleccioná un servicio...</option>
+            <option>Sitio Web</option>
+            <option>Tienda Online</option>
+            <option>Publicidad Meta Ads</option>
+            <option>Gestión de Redes Sociales</option>
+            <option>Pack completo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contanos sobre tu proyecto</label>
+          <textarea class="form-textarea" placeholder="¿Qué necesitás? ¿Cuál es tu objetivo?"></textarea>
+        </div>
+        <button class="btn-submit">Enviar Consulta →</button>
+      </div>
+    </div>
+    <div class="contact-info reveal">
+      <h3>¿Preferís hablar directamente?</h3>
+      <p>Estamos disponibles para responder tus dudas y ayudarte a encontrar la mejor solución para tu negocio.</p>
+      <div class="contact-channels">
+        <a href="https://wa.me/5493385462953" class="channel" target="_blank">
+          <span class="channel-icon">💬</span>
+          <div>
+            <div class="channel-label">WhatsApp</div>
+            <div class="channel-value">Chateá con nosotros</div>
+          </div>
+        </a>
+        <a href="mailto:contacto@csvisualmedia.com" class="channel">
+          <span class="channel-icon">✉️</span>
+          <div>
+            <div class="channel-label">Email</div>
+            <div class="channel-value">contacto@csvisualmedia.com</div>
+          </div>
+        </a>
+        <a href="https://instagram.com/csvisualmedia" class="channel" target="_blank">
+          <span class="channel-icon">📸</span>
+          <div>
+            <div class="channel-label">Instagram</div>
+            <div class="channel-value">@csvisualmedia</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">CS <span>Visual</span>Media</div>
+    <div class="footer-copy">© 2026 CS Visual Media · Todos los derechos reservados</div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
