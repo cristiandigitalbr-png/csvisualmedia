@@ -31,12 +31,10 @@
       overflow-x: hidden;
     }
 
-    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -62,15 +60,6 @@
     }
     .nav-links a:hover { color: var(--blue-light); }
 
-    .nav-cta {
-      background: var(--blue); color: #fff;
-      padding: 10px 24px; border-radius: 4px;
-      font-weight: 700; font-size: 0.85rem; letter-spacing: 1px;
-      text-transform: uppercase; text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
-
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -86,27 +75,6 @@
       display: flex; flex-direction: column;
       align-items: flex-start;
       position: relative; z-index: 1;
-    }
-
-    .hero-image-wrap { 
-      display: none;
-    }
-
-    .hero-image-wrap::before {
-      display: none;
-    }
-
-    .hero-image-wrap::after {
-      display: none;
-    }
-
-    .hero-photo {
-      width: 100%; max-width: 500px;
-      border-radius: 10px;
-      display: block;
-      object-fit: cover;
-      filter: brightness(0.95) contrast(1.05);
-      animation: float1 4s ease-in-out infinite;
     }
 
     .hero-bg {
@@ -160,46 +128,8 @@
       animation: fadeUp 0.7s 0.2s ease both;
     }
 
-    .hero-actions {
-      position: relative; z-index: 1;
-      display: flex; gap: 16px; align-items: center;
-      margin-top: 44px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
+    .hero-stats { display: none; }
 
-    .btn-primary {
-      background: var(--blue); color: #fff;
-      padding: 15px 36px; border-radius: 4px;
-      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
-      text-transform: uppercase; text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 0 0 30px rgba(26,127,232,0.4);
-    }
-    .btn-primary:hover {
-      background: var(--blue-light);
-      box-shadow: 0 0 50px rgba(26,127,232,0.6);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      color: var(--white); text-decoration: none;
-      font-weight: 600; font-size: 0.9rem;
-      display: flex; align-items: center; gap: 8px;
-      padding: 15px 0;
-      transition: color 0.2s;
-    }
-    .btn-secondary::after {
-      content: '→';
-      transition: transform 0.2s;
-    }
-    .btn-secondary:hover { color: var(--blue-light); }
-    .btn-secondary:hover::after { transform: translateX(4px); }
-
-    .hero-stats {
-      position: relative; z-index: 1;
-      display: flex; gap: 48px; margin-top: 80px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.4s ease both;
-    }
     .stat-num {
       font-family: var(--font-display);
       font-size: 2.8rem; font-weight: 900; color: var(--white);
@@ -254,7 +184,7 @@
       background: var(--dark2);
       padding: 48px 36px;
       position: relative; overflow: hidden;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s ease;
       cursor: default;
     }
     .service-card::before {
@@ -265,7 +195,7 @@
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
-    .service-card:hover { background: var(--dark3); }
+    .service-card:hover { background: var(--dark3); transform: translateY(-8px) !important; box-shadow: 0 20px 40px rgba(26,127,232,0.15); }
     .service-card:hover::before { transform: scaleX(1); }
 
     .service-icon {
@@ -292,16 +222,6 @@
       line-height: 1; pointer-events: none;
     }
 
-    .service-tags {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
-    }
-    .service-tag {
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 1px; text-transform: uppercase;
-      color: var(--blue); border: 1px solid rgba(26,127,232,0.3);
-      padding: 4px 10px; border-radius: 2px;
-    }
-
     /* ── WHY US ── */
     #nosotros {
       background: var(--black);
@@ -309,15 +229,14 @@
       gap: 80px; align-items: center;
     }
 
-    .why-visual {
-      position: relative;
-    }
+    .why-visual { position: relative; }
 
     .why-box-main {
       background: var(--dark2);
       border: 1px solid rgba(26,127,232,0.2);
       padding: 48px;
       position: relative;
+      animation: float1 4s ease-in-out infinite;
     }
 
     .why-box-main::after {
@@ -328,28 +247,15 @@
       z-index: -1;
     }
 
-    .big-cs {
-      font-family: var(--font-display);
-      font-size: 8rem; font-weight: 900;
-      line-height: 1;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .why-box-main p {
-      color: var(--gray); font-size: 1rem; line-height: 1.8;
-      margin-top: 16px;
-    }
-
     .why-features { margin-top: 40px; }
     .why-feature {
       display: flex; align-items: flex-start; gap: 16px;
       padding: 20px 0;
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease;
     }
     .why-feature:last-child { border-bottom: none; }
+    .why-feature:hover { transform: translateX(6px); }
 
     .feature-icon {
       width: 40px; height: 40px; flex-shrink: 0;
@@ -474,9 +380,9 @@
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 4px;
       text-decoration: none; color: var(--white);
-      transition: border-color 0.2s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.3s ease;
     }
-    .channel:hover { border-color: var(--blue); transform: translateX(4px); }
+    .channel:hover { border-color: var(--blue); transform: translateX(8px) translateY(-3px) !important; }
     .channel-icon { font-size: 1.4rem; }
     .channel-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
     .channel-value { font-weight: 600; font-size: 0.95rem; }
@@ -487,7 +393,7 @@
       border-top: 1px solid rgba(255,255,255,0.05);
       padding: 40px 6vw;
       display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: gap;
+      align-items: center; flex-wrap: wrap;
       gap: 16px;
     }
 
@@ -497,7 +403,6 @@
       color: var(--white);
     }
     .footer-logo span { color: var(--blue); }
-
     .footer-copy { color: var(--gray); font-size: 0.85rem; }
 
     /* ── ANIMATIONS ── */
@@ -505,7 +410,6 @@
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes float1 {
       0%, 100% { transform: translateY(0px); }
       50%       { transform: translateY(-8px); }
@@ -527,46 +431,13 @@
       opacity: 1; transform: translateY(0);
     }
 
-    /* Flotante en tarjetas de servicios */
-    .service-card {
-      transition: transform 0.3s ease, background 0.3s;
-    }
-    .service-card:hover {
-      transform: translateY(-8px) !important;
-      box-shadow: 0 20px 40px rgba(26,127,232,0.15);
-    }
-
-    /* Flotante continuo en bloque CS */
-    .why-box-main {
-      animation: float1 4s ease-in-out infinite;
-    }
-
-    /* Flotante en pasos del proceso */
     .process-step:nth-child(1) { animation: float1 4s ease-in-out infinite; }
     .process-step:nth-child(2) { animation: float2 4.5s ease-in-out infinite 0.5s; }
     .process-step:nth-child(3) { animation: float3 5s ease-in-out infinite 1s; }
     .process-step:nth-child(4) { animation: float1 4.2s ease-in-out infinite 1.5s; }
 
-    /* Flotante en estadísticas del hero */
     .hero-stats > div:nth-child(1) { animation: float2 4s ease-in-out infinite; }
     .hero-stats > div:nth-child(2) { animation: float1 4.5s ease-in-out infinite 0.7s; }
-    .hero-stats > div:nth-child(3) { animation: float3 5s ease-in-out infinite 1.2s; }
-
-    /* Flotante en canales de contacto */
-    .channel {
-      transition: border-color 0.2s, transform 0.3s ease;
-    }
-    .channel:hover {
-      transform: translateX(8px) translateY(-3px) !important;
-    }
-
-    /* Flotante en why-features */
-    .why-feature {
-      transition: transform 0.3s ease;
-    }
-    .why-feature:hover {
-      transform: translateX(6px);
-    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -575,20 +446,8 @@
         text-align: center;
       }
       .hero-content { align-items: center; }
-      .hero-image-wrap { 
-        display: none !important;
-      }
-      .hero-actions {
-        justify-content: center;
-        width: 100%;
-      }
-      .hero-stats {
-        justify-content: center;
-        gap: 40px;
-      }
-      .process-step:nth-child(2) {
-        padding-top: 48px;
-      }
+      .hero-right { width: 100%; }
+      .hero-photo { max-width: 320px; }
       #nosotros, #contacto {
         grid-template-columns: 1fr;
         gap: 48px;
@@ -601,7 +460,6 @@
     @media (max-width: 600px) {
       nav { padding: 16px 5vw; }
       section { padding: 72px 5vw; }
-      .hero-stats { gap: 32px; }
     }
   </style>
 </head>
@@ -616,13 +474,13 @@
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-  
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
+
     <div class="hero-content">
       <div class="hero-tag">Marketing Digital</div>
       <h1>
@@ -633,22 +491,6 @@
       <p class="hero-sub">
         Diseñamos sitios web, gestionamos tu presencia digital y hacemos crecer tu negocio.
       </p>
-      <div class="hero-actions">
-        <a href="#servicios" class="btn-primary">Ver Servicios</a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">150<span>+</span></div>
-          <div class="stat-label">Proyectos entregados</div>
-        </div>
-        <div>
-          <div class="stat-num">100<span>%</span></div>
-          <div class="stat-label">Clientes satisfechos</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-image-wrap">
-      <img src="foto-perfil.png" alt="CS Visual Media" class="hero-photo"/>
     </div>
   </section>
 
@@ -691,9 +533,19 @@
 
   <!-- WHY US -->
   <section id="nosotros">
-    <div class="why-visual reveal">
+    <div class="why-visual reveal" style="display:flex; flex-direction:column; gap:40px;">
       <div class="why-box-main" style="padding: 0; overflow: hidden; background: none; border: none;">
         <img src="foto-perfil.png" alt="Cristian - CS Visual Media" style="width: 100%; border-radius: 10px; display: block; object-fit: cover;"/>
+      </div>
+      <div style="display:flex; gap:48px; flex-wrap:wrap; justify-content:center;">
+        <div style="text-align:center;">
+          <div class="stat-num">150<span>+</span></div>
+          <div class="stat-label">Proyectos entregados</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Clientes satisfechos</div>
+        </div>
       </div>
     </div>
     <div class="reveal">
@@ -835,7 +687,6 @@
   </footer>
 
   <script>
-    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
