@@ -577,7 +577,17 @@
         text-align: center;
       }
       .hero-content { align-items: center; }
-      .hero-image-wrap { display: none; }
+      .hero-image-wrap { 
+        display: flex;
+        order: -1;
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-photo { 
+        width: 80%;
+        max-width: 280px;
+        border-radius: 12px;
+      }
       #nosotros, #contacto {
         grid-template-columns: 1fr;
         gap: 48px;
