@@ -357,7 +357,7 @@
     }
 
     .section-intro {
-      color: var(--gray-light); font-size: 1rem; line-height: 1.75;
+      color: var(--gray-light); font-size: 1.1rem; line-height: 1.75;
       max-width: 480px; margin-top: 16px;
     }
 
@@ -411,7 +411,7 @@
     }
 
     .service-card p {
-      color: var(--gray); font-size: 0.95rem; line-height: 1.75;
+      color: var(--gray); font-size: 1.05rem; line-height: 1.75;
       position: relative; z-index: 1; margin-bottom: 28px;
     }
 
@@ -466,7 +466,7 @@
       color: var(--blue); font-size: 0.75rem; font-weight: 800;
     }
     .benefit-text {
-      font-size: 0.9rem; font-weight: 600; color: var(--white);
+      font-size: 1.05rem; font-weight: 600; color: var(--white);
       line-height: 1.4; padding-top: 4px;
     }
 
@@ -575,11 +575,11 @@
 
     .process-step h3 {
       font-family: var(--font-display);
-      font-size: 1.25rem; font-weight: 800;
+      font-size: 1.45rem; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.5px;
       margin-bottom: 12px; color: var(--white);
     }
-    .process-step p { color: var(--gray); font-size: 0.9rem; line-height: 1.65; }
+    .process-step p { color: var(--gray); font-size: 1.05rem; line-height: 1.7; }
 
     /* ── TESTIMONIOS ── */
     #testimonios { background: var(--black); }
@@ -1136,8 +1136,41 @@
       <a href="https://instagram.com/csvisualmedia" target="_blank" title="Instagram">IG</a>
       <a href="mailto:csvisualmediaok@gmail.com" title="Email">EM</a>
     </div>
-    <div class="footer-copy">© 2026 CS Visual Media · Todos los derechos reservados</div>
+    <div class="footer-copy">© 2026 CS Visual Media · Todos los derechos reservados · <a href="#" onclick="document.getElementById('modalPrivacidad').style.display='flex';return false;">Política de Privacidad</a></div>
   </footer>
+
+<!-- MODAL POLÍTICA DE PRIVACIDAD -->
+<div id="modalPrivacidad" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#141420;border:1px solid rgba(14,106,181,0.25);border-radius:8px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;">
+    <button onclick="document.getElementById('modalPrivacidad').style.display='none'" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#7878a0;">✕</button>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0e6ab5;margin-bottom:12px;">Legal</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;text-transform:uppercase;color:#F0F2F8;margin-bottom:6px;">Política de Privacidad</h2>
+    <p style="font-size:13px;color:#7878a0;margin-bottom:32px;">CS Visual Media · Última actualización: 2026</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">1. Responsable del tratamiento de datos</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">CS Visual Media, agencia de marketing y diseño web con operaciones en Argentina, es responsable del tratamiento de los datos personales recopilados a través de este sitio. Para consultas podés comunicarte por WhatsApp al <strong style="color:#F0F2F8;">+54 9 3385 46-2953</strong> o por email a <strong style="color:#F0F2F8;">csvisualmediaok@gmail.com</strong>.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">2. Datos que recopilamos</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">Recopilamos únicamente los datos que vos mismo/a nos proporcionás al contactarnos por WhatsApp, email o Instagram: nombre, número de teléfono, dirección de email y consultas relacionadas con nuestros servicios.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">3. Finalidad del uso de los datos</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">Los datos recopilados se utilizan exclusivamente para responder consultas sobre nuestros servicios, elaborar presupuestos y dar seguimiento a proyectos en curso.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">4. Compartición de datos con terceros</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">CS Visual Media no vende, cede ni transfiere tus datos personales a terceros, salvo que exista una obligación legal que lo requiera.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">5. Protección de los datos</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">Tratamos tus datos con confidencialidad y adoptamos medidas razonables para protegerlos de accesos no autorizados, pérdida o uso indebido.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">6. Tus derechos</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:24px;">Conforme a la Ley 25.326 de Protección de Datos Personales de la República Argentina, tenés derecho a acceder, rectificar o solicitar la eliminación de tus datos en cualquier momento. Para ejercer estos derechos contactanos por WhatsApp o email.</p>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#F0F2F8;margin-bottom:8px;">7. Modificaciones</h3>
+    <p style="font-size:14px;color:#a0a0c0;line-height:1.75;margin-bottom:32px;">Nos reservamos el derecho de actualizar esta política en cualquier momento. Cualquier cambio será publicado en esta misma página.</p>
+
+    <button onclick="document.getElementById('modalPrivacidad').style.display='none'" style="background:#0e6ab5;color:#fff;border:none;padding:12px 28px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Cerrar</button>
+  </div>
+</div>
 
   <script>
     // NAV scroll
