@@ -16,9 +16,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #1EA7FF;
-      --blue-dim: rgba(30,167,255,0.12);
-      --blue-border: rgba(30,167,255,0.25);
+      --blue: #0e6ab5;
+      --blue-dim: rgba(14,106,181,0.1);
+      --blue-border: rgba(14,106,181,0.18);
       --black: #0A0A0A;
       --dark: #0f0f14;
       --dark2: #141420;
@@ -88,11 +88,11 @@
       font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
       text-decoration: none;
       transition: all 0.2s;
-      box-shadow: 0 0 24px rgba(30,167,255,0.3);
+      box-shadow: 0 0 24px rgba(14,106,181,0.25);
     }
     .nav-cta:hover {
-      background: #3dbeff;
-      box-shadow: 0 0 40px rgba(30,167,255,0.5);
+      background: #1278C8;
+      box-shadow: 0 0 40px rgba(14,106,181,0.35);
       transform: translateY(-1px);
     }
 
@@ -148,8 +148,8 @@
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
       background-image:
-        linear-gradient(rgba(30,167,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30,167,255,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(14,106,181,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,106,181,0.04) 1px, transparent 1px);
       background-size: 80px 80px;
       animation: gridDrift 20s linear infinite;
     }
@@ -165,13 +165,13 @@
     }
     .orb-1 {
       width: 500px; height: 500px;
-      background: rgba(30,167,255,0.08);
+      background: rgba(14,106,181,0.07);
       top: -100px; right: -100px;
       animation: orbPulse 8s ease-in-out infinite;
     }
     .orb-2 {
       width: 300px; height: 300px;
-      background: rgba(30,167,255,0.06);
+      background: rgba(14,106,181,0.05);
       bottom: 50px; left: -80px;
       animation: orbPulse 10s ease-in-out infinite 2s;
     }
@@ -240,7 +240,7 @@
     }
     h1 .accent { color: var(--blue); }
     h1 .line-stroke {
-      -webkit-text-stroke: 2px rgba(30,167,255,0.5);
+      -webkit-text-stroke: 2px rgba(14,106,181,0.35);
       color: transparent;
     }
 
@@ -267,11 +267,11 @@
       font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
       text-decoration: none; cursor: pointer;
       transition: all 0.25s;
-      box-shadow: 0 0 30px rgba(30,167,255,0.35);
+      box-shadow: 0 0 30px rgba(14,106,181,0.25);
     }
     .btn-primary:hover {
-      background: #3dbeff;
-      box-shadow: 0 0 60px rgba(30,167,255,0.55);
+      background: #1278C8;
+      box-shadow: 0 0 60px rgba(14,106,181,0.4);
       transform: translateY(-3px);
     }
 
@@ -427,7 +427,7 @@
       position: absolute; bottom: 20px; right: 28px;
       font-family: var(--font-display);
       font-size: 6rem; font-weight: 900;
-      color: rgba(30,167,255,0.04);
+      color: rgba(14,106,181,0.04);
       line-height: 1; pointer-events: none; z-index: 0;
     }
 
@@ -551,7 +551,14 @@
       border-color: var(--blue);
       background: var(--blue-dim);
     }
-    .step-icon { font-size: 1.8rem; }
+    .step-icon {
+      font-size: 1.4rem;
+      color: var(--blue);
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
 
     .step-num-label {
       position: absolute; top: -10px; right: -8px;
@@ -640,7 +647,7 @@
     #cta::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30,167,255,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(14,106,181,0.06) 0%, transparent 70%);
     }
     .cta-tag { position: relative; z-index: 1; }
     #cta h2 { position: relative; z-index: 1; max-width: 700px; margin: 16px auto 0; }
@@ -656,8 +663,8 @@
     }
 
     .btn-wa {
-      background: #25D366; color: #fff;
-      padding: 15px 32px; border: none; border-radius: 3px;
+      background: #0f0f14; color: #fff;
+      padding: 15px 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px;
       font-family: var(--font-display); font-size: 1rem;
       font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
       text-decoration: none; cursor: pointer;
@@ -665,9 +672,10 @@
       display: inline-flex; align-items: center; gap: 10px;
     }
     .btn-wa:hover {
-      background: #1db954;
+      background: #1a1a28;
+      border-color: rgba(255,255,255,0.3);
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
     /* ── CONTACTO ── */
@@ -698,7 +706,7 @@
     }
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(30,167,255,0.08);
+      box-shadow: 0 0 0 3px rgba(14,106,181,0.07);
     }
     .form-select { appearance: none; cursor: pointer; }
     .form-textarea { resize: vertical; min-height: 120px; }
@@ -711,11 +719,11 @@
       font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
       cursor: pointer; margin-top: 8px;
       transition: all 0.25s;
-      box-shadow: 0 0 30px rgba(30,167,255,0.25);
+      box-shadow: 0 0 30px rgba(14,106,181,0.18);
     }
     .btn-submit:hover {
-      background: #3dbeff;
-      box-shadow: 0 0 50px rgba(30,167,255,0.45);
+      background: #1278C8;
+      box-shadow: 0 0 50px rgba(14,106,181,0.3);
       transform: translateY(-2px);
     }
 
@@ -850,7 +858,7 @@
     <div class="hero-orb orb-2"></div>
     <div class="particles" id="particles"></div>
 
-    <div class="hero-tag">Agencia Digital · Argentina</div>
+
     <div class="hero-logo-display">CS Visual Media</div>
     <h1>
       Tu negocio merece<br>
@@ -905,28 +913,28 @@
         <span class="service-icon">🌐</span>
         <h3>Diseño de Sitios Web</h3>
         <p>Creamos sitios web modernos, rápidos y optimizados para generar confianza y convertir visitantes en clientes.</p>
-        <a href="https://wa.me/5493385462953?text=Quiero%20un%20sitio%20web" target="_blank" class="service-link">Consultar</a>
+        <a href="https://wa.me/5493385462953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20dise%C3%B1o%20de%20sitio%20web" target="_blank" class="service-link">Consultar</a>
         <div class="service-num">01</div>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <span class="service-icon">📣</span>
         <h3>Publicidad Digital</h3>
         <p>Campañas estratégicas en Facebook, Instagram y Google para atraer clientes potenciales y maximizar tu inversión.</p>
-        <a href="https://wa.me/5493385462953?text=Quiero%20publicidad%20digital" target="_blank" class="service-link">Consultar</a>
+        <a href="https://wa.me/5493385462953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20publicidad%20digital" target="_blank" class="service-link">Consultar</a>
         <div class="service-num">02</div>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <span class="service-icon">📱</span>
         <h3>Gestión de Redes Sociales</h3>
         <p>Creamos y gestionamos contenido para mantener activa y profesional la presencia digital de tu negocio.</p>
-        <a href="https://wa.me/5493385462953?text=Quiero%20gesti%C3%B3n%20de%20redes" target="_blank" class="service-link">Consultar</a>
+        <a href="https://wa.me/5493385462953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20gesti%C3%B3n%20de%20redes%20sociales" target="_blank" class="service-link">Consultar</a>
         <div class="service-num">03</div>
       </div>
       <div class="service-card reveal reveal-delay-3">
         <span class="service-icon">🎬</span>
         <h3>Contenido Audiovisual</h3>
         <p>Producción de contenido visual atractivo que fortalece la imagen de tu marca y genera mayor impacto en tu audiencia.</p>
-        <a href="https://wa.me/5493385462953?text=Quiero%20contenido%20audiovisual" target="_blank" class="service-link">Consultar</a>
+        <a href="https://wa.me/5493385462953?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20contenido%20audiovisual" target="_blank" class="service-link">Consultar</a>
         <div class="service-num">04</div>
       </div>
     </div>
@@ -936,8 +944,7 @@
   <section id="beneficios">
     <div class="reveal">
       <span class="section-tag">Por qué elegirnos</span>
-      <h2>¿Por qué <span class="accent">CS Visual</span><br><span class="stroke">Media?</span></h2>
-      <p class="section-intro">No somos una agencia más. Somos tu equipo digital de confianza, con foco en resultados reales.</p>
+      <h2>¿Por qué <span class="accent">CS Visual</span><br><span class="accent">Media?</span></h2>
       <div class="benefits-list">
         <div class="benefit-item">
           <div class="benefit-check">✓</div>
@@ -1000,7 +1007,7 @@
     <div class="process-track">
       <div class="process-step reveal">
         <div class="step-circle">
-          <span class="step-icon">🔍</span>
+          <span class="step-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="14" y1="2" x2="14" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="22" x2="14" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14" x2="6" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
           <div class="step-num-label">1</div>
         </div>
         <h3>Analizamos tu negocio</h3>
@@ -1008,7 +1015,7 @@
       </div>
       <div class="process-step reveal reveal-delay-1">
         <div class="step-circle">
-          <span class="step-icon">🎯</span>
+          <span class="step-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><polygon points="14,3 25,22 3,22" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="14" y1="10" x2="14" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="18" r="0.8" fill="currentColor"/></svg></span>
           <div class="step-num-label">2</div>
         </div>
         <h3>Diseñamos la estrategia</h3>
@@ -1016,7 +1023,7 @@
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-circle">
-          <span class="step-icon">⚡</span>
+          <span class="step-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/><polyline points="8,14 12,18 20,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="step-num-label">3</div>
         </div>
         <h3>Ejecutamos el proyecto</h3>
@@ -1024,7 +1031,7 @@
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="step-circle">
-          <span class="step-icon">🚀</span>
+          <span class="step-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><polyline points="4,20 10,12 16,16 22,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="18,6 22,6 22,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="step-num-label">4</div>
         </div>
         <h3>Impulsamos tu crecimiento</h3>
